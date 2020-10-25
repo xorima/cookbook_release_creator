@@ -18,10 +18,7 @@ module CookbookReleaseCreator
 
     def current_metadata_version
       file = get_file_contents(@metadata_name)
-      response = {}
-      response['content'] = file['content']
-      response['sha'] = file['sha']
-
+      response = file
       m = response['content'].match(/\n(version\s+\'(\d+\.\d+\.\d+)\')\n/m)
       if m
         response['full_string'] = m[1]
@@ -34,9 +31,10 @@ module CookbookReleaseCreator
 
     def update_metadata_version(version_metadata)
       new_version = version_metadata['new_version']
-      new_version_string = version_metadata['full_string'].gsub(version_metadata['version'], new_version)
-      version_metadata['content'] = version_metadata['content'].gsub(version_metadata['full_string'],new_version_string)
-      update_file_contents(@metadata_name, "Update metadata for #{new_version}", version_metadata['sha'], version_metadata['content'])
+      current_version_string = version_metadata['full_string']
+      new_version_string = current_version_string.gsub(version_metadata['version'], new_version)
+      content = version_metadata['content'].gsub(current_version_string, new_version_string)
+      update_file_contents(@metadata_name, "Update metadata for #{new_version}", version_metadata['sha'], content)
     end
 
     def unreleased_changelog_entry

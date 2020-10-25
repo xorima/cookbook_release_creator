@@ -18,11 +18,12 @@ post '/handler' do
   when 'pull_request'
     if target_default_branch?(payload) && merged_webhook?(payload)
       vcs = CookbookReleaseCreator::Vcs.new(token: ENV['GITHUB_TOKEN'], pull_request: payload['pull_request'],
-                                    repository: payload['repository'])
+                                            repository: payload['repository'])
       semver = CookbookReleaseCreator::SemVer.new(pull_request: payload['pull_request'])
 
       version_metadata = vcs.current_metadata_version
       return halt 500, 'Error finding version number!' if version_metadata['error']
+
       version_metadata['new_version'] = semver.increment_release(version_metadata['version'])
       release_body = vcs.unreleased_changelog_entry
       vcs.create_changelog_entry(version_metadata['new_version'])
