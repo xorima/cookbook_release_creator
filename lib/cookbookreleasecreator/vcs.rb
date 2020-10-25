@@ -19,7 +19,7 @@ module CookbookReleaseCreator
     def current_metadata_version
       file = get_file_contents(@metadata_name)
       response = file
-      m = response['content'].match(/\n(version\s+\'(\d+\.\d+\.\d+)\')\n/m)
+      m = response['content'].match(/\n(version\s+'(\d+\.\d+\.\d+)')\n/m)
       if m
         response['full_string'] = m[1]
         response['version'] = m[2]
