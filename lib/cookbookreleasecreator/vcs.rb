@@ -66,6 +66,13 @@ module CookbookReleaseCreator
                           body)
     end
 
+    def create_deployment(new_version, release_body, release)
+      payload = JSON.generate(pull_request: @pull_request, release: release, release_body: release_body)
+      @client.create_deployment(@repository_name,
+                                new_version,
+                                { payload: payload, description: "Deploying #{new_version}", required_contexts: [] })
+    end
+
     private
 
     def get_file_contents(file_path)
