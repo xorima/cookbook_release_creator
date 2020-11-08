@@ -30,6 +30,8 @@ post '/handler' do
       vcs.update_metadata_version(version_metadata)
 
       rel = vcs.create_release(version_metadata['new_version'], release_body)
+      # release_body is so we can easily find the comments to push to messaging services later on
+      vcs.create_deployment(version_metadata['new_version'], release_body)
       vcs.add_release_comment("Released as: [#{version_metadata['new_version']}](#{rel['html_url']})")
       rel['tag_name']
     end

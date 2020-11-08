@@ -51,4 +51,8 @@ describe CookbookReleaseCreator::Vcs, :vcr do
     comment = @client.add_release_comment(body)
     expect(comment['body']).to eq body
   end
+
+  it 'creates a deployment on the release' do
+    deployment = @client.create_deployment('4.0.0', 'This is my body', {release: 'something'})
+  end
 end

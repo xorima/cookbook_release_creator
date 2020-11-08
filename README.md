@@ -1,6 +1,6 @@
 # Cookbook Release Creator
 
-Creates a release in github based on the metadata.rb from a github webhook event and a release based on the label of `Release: Major|Minor|Patch` on the merged pull request
+Creates a release and deployment in github based on the metadata.rb from a github webhook event and a release based on the label of `Release: Major|Minor|Patch` on the merged pull request
 
 ## Configuration
 
