@@ -2,6 +2,8 @@
 
 This file is used to list changes made in releasecreator.
 
+## Unreleased
+
 ## 1.1.0 - *2020-11-08*
 
 - Create a Deployment
