@@ -4,6 +4,9 @@ This file is used to list changes made in releasecreator.
 
 ## Unreleased
 
+- Fixed a bug where the deployment would not be created
+- Improved testing around deployment creation
+
 ## 1.1.0 - *2020-11-08*
 
 - Create a Deployment

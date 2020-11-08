@@ -54,5 +54,7 @@ describe CookbookReleaseCreator::Vcs, :vcr do
 
   it 'creates a deployment on the release' do
     deployment = @client.create_deployment('4.0.0', 'This is my body', {release: 'something'})
+    expect(deployment['task']).to eq 'deploy'
+    expect(deployment['payload']).to eq '{"pull_request":{"number":30},"release":{"release":"something"},"release_body":"This is my body"}'
   end
 end
