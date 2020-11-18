@@ -4,6 +4,8 @@ This file is used to list changes made in releasecreator.
 
 ## Unreleased
 
+- Fixed bug with dockerhub push due to set-env deprecation
+
 ## 1.1.1 - *2020-11-08*
 
 - Fixed a bug where the deployment would not be created
