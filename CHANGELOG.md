@@ -2,7 +2,7 @@
 
 This file is used to list changes made in releasecreator.
 
-## Unreleased
+## 1.2.0 - *2020-11-20*
 
 - Adds support for `v` prefixes in the changelog version numbers
 
